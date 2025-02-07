@@ -1,0 +1,86 @@
+{% import "bootstrap/form.html" as wtf %}
+{% extends "base.html" %} {% block content %}
+    <main>
+      <div class="container py-3">
+        <div class="card text-bg-secondary px-5 py-4">
+		    <form class="row g-3" method="post">
+				{{ form.csrf_token }}
+                <div class="row py-4">
+                <div class="col-4">
+                    <fieldset class="py-2">
+                        {{form.name.label}}
+                        {{form.name(class="form-control text-bg-secondary", placeholder="{{Event.name}}")}}
+                    </fieldset>
+                </div>
+                <div class="col-4">
+                    <fieldset class="py-2">
+                        {{form.price.label}}
+                        {{form.price(class="form-control text-bg-secondary", placeholder="{{event.price}}")}}
+                    </fieldset>
+                </div>
+                <div class="col-4">
+                    <fieldset class="py-2">
+                        {{form.status.label}}
+                        {{form.status(class="form-control text-bg-secondary", placeholder="{{event.status}}")}}
+                    </fieldset>
+                </div>
+                <div class="col-4">
+                    <fieldset class="py-2">
+                        {{form.genre.label}}
+                        {{form.genre(class="form-control text-bg-secondary", placeholder="{{event.genre}}")}}
+                    </fieldset>
+                </div>
+                <div class="col-4">
+                    <fieldset class="py-2">
+                        {{form.artist.label}}
+                        {{form.artist(class="form-control text-bg-secondary", placeholder="{{event.artist}}")}}
+                    </fieldset>
+                </div>
+                <div class="col-4">
+                    <fieldset class="py-2">
+                        {{form.external_link.label}}
+                        {{form.external_link(class="form-control text-bg-secondary", placeholder="{{event.external_link}}")}}
+                    </fieldset>
+                </div>
+                <div class="col-12">
+                    <div class="col-12">
+                    <fieldset class="py-2">
+                        {{form.description.label}}
+                        {{form.description(class="form-control text-bg-secondary", placeholder="{{event.description}}")}}
+                    </fieldset>
+                    </div>
+                </div>
+                <div class="row py-4 px-3">
+                    <div class="col-3">
+                        <fieldset>
+                            {{form.date.label}}
+                            {{form.date(class="form-control text-bg-secondary", placeholder="{{event.date}}")}}
+                        </fieldset>
+                    </div>
+                    <div class="col-3">
+                        <fieldset>
+                            {{form.start_time.label}}
+                            {{form.start_time(class="form-control text-bg-secondary", placeholder="{{event.time}}")}}
+                        </fieldset>
+                    </div>
+                    <div class="col-3">
+                        <fieldset>
+                            {{form.venue.label}}
+                            {{form.venue(class = "form-control text-bg-secondary",  placeholder="{{event.venue}}")}}
+                        </fieldset>
+                    </div>
+                    <div class="col-3">
+                        <fieldset>
+                            {{form.capacity.label}}
+                            {{form.capacity(class="form-control text-bg-secondary", placeholder = "{{event.capacity}}")}}
+                        </fieldset>
+                    </div>
+                    <div class="col-4 py-3">
+                        {{ form.submit(class="btn btn-primary", type="submit", value="Create")}}
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </main>
+{% endblock %}

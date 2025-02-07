@@ -1,0 +1,63 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<main>
+	<!-- Hero -->
+	<div class="px-4 py-5 text-center hero-image text-light">
+		<div class="col-lg-6 mx-auto">
+			<img class="d-block mx-auto mb-4" src= {{ url_for('static', filename = "img/finallogo.png") }} width="100" height="100" alt="ENTINF logo" title="Logo">
+			<h1 class="display-5 fw-bold">Entertainment Infinite</h1>
+			<div class="col-lg-6 mx-auto">
+				<p class="lead mb-4">
+					Live life to the fullest, with Entertainment Infinite, your one-stop shop for all music live entertainment.
+					Book, scope and share today with our fast and easy-to-use platform that's constantly updating events and concerts around you!
+				</p>
+				<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+					<a type="button" href="{{ url_for('events.eventslist')}}" class="btn btn-primary btn-lg px-4 gap-3">Browse Events</a>
+					<a type="button" href="{{ url_for('events.create')}}" class="btn btn-secondary btn-lg px-4">Create Event</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Events -->
+	<div id="events" class="container py-4">
+		<div class="card text-bg-secondary px-5 py-4">
+			<h1 class="display-3 center">Events</h1>
+			<!-- Search Bar -->
+			<div class="row center py-3 px-5">
+				<div class="py-3 px-5">
+					<form class="d-flex col-12 px-5" role="search" action="{{url_for('main.search')}}#eventlist">
+						<input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search" id="SearchForm"/>
+						<button class="btn btn-success" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+			<br />
+			<h4 class="py-2">Events in Brisbane City</h4>
+			<!-- Event Cards -->
+			<div id="eventlist" class="row row-cols-md-2 g-4">
+				{% for event in events %}
+					<a type="button" href="{{url_for('events.details', id=event.id)}}" class="btn">
+						<div class="col card text-bg-secondary">
+							<div class="row">
+								<div class="col-md-4">
+									<img class="img-fluid rounded-start" style="height: 210px; object-fit: cover;" src= {{ event.image }} alt="event image" title="Image">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<h5 class="card-title"> {{ event.name }} <span class="badge bg-primary text-wrap"> {{ event.status }} </span></h5>
+										<p class="card-text"><small>Artist: {{ event.artist }}</small></p>
+										<p class="card-text"><small>Date: {{ event.date }} &nbsp Venue: {{ event.venue }}</small></p>
+										<p class="card-text">{{ event.description|truncate(75,true) }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<!-- Event Cards Container-->
+</main>
+{% endblock %}

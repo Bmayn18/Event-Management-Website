@@ -1,0 +1,34 @@
+.hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/2747446/pexels-photo-2747446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0%;
+}
+
+#ltl:link {
+	color: lightskyblue;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+#ltl:visited {
+	color: lightseagreen;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+#ltl:hover {
+	color: blue;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+#ltl:active {
+	color: white;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+.center {
+	text-align: center;
+}

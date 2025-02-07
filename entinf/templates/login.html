@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block content %}
+<main>
+	<div class="container py-4">
+		<h1 class="display-1 text-light py-4">Login</h1>
+		<div class="card text-bg-secondary px-5 py-4">
+			<form class="row g-3 px-2" method="post">
+				{{ form.csrf_token }}
+				<div class="col-md-6">
+					<fieldset class="form-label">
+						{{form.user_name.label}}
+						{{form.user_name(class="form-control text-bg-secondary")}}
+					</fieldset>
+				</div>
+				<div class="col-md-6">
+					<fieldset class="form-label">
+						{{form.password.label}}
+						{{form.password(class="form-control text-bg-secondary")}}
+					</fieldset>
+				</div>
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<div class = "container-fluid">
+						<div class = "row mt-3 mb-3">
+						<div class = "col-md-12">
+						{% for message in messages %}
+							<div class = "alert alert-info">{{message}}</div>
+						{% endfor %}
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endwith %}
+				<div class="col-12">
+					{{ form.submit(class="btn btn-primary", type="submit", value="Login")}}
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+{% endblock %}

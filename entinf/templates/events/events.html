@@ -1,0 +1,49 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<main>
+	<!-- Events -->
+	<div id="events" class="container py-4">
+		<h1 class="display-1 text-light py-4">Events</h1>
+		<div class="card text-bg-secondary px-5 py-4">
+			<!-- Categories -->
+			<h4 class="">Check out trending categories</h4>
+				<form method="post">
+					{{ form.csrf_token }}
+					<fieldset>
+						<div class="d-flex">
+							<div class="p-2 flex-fill">{{ form.genre(class="form-select text-bg-secondary") }}</div>
+							<div class="p-2 flex-fill">{{ form.venue(class="form-select text-bg-secondary") }}</div>
+							<div class="p-2 flex-fill">{{ form.submit(class="btn btn-primary", type="submit", value="Filter") }}</div>
+						</div>
+					</fieldset>
+				</form>
+			<br />
+			<h4 class="py-2">Events in Brisbane City</h4>
+			<!-- Event Cards -->
+			<div class="row row-cols-md-2 g-4">
+				{% for event in events %}
+					<a type="button" href="{{url_for('events.details', id=event.id)}}" class="btn">
+						<div class="col card text-bg-secondary">
+							<div class="row">
+								<div class="col-md-4">
+									<img class="img-fluid rounded-start" style="height: 210px; object-fit: cover;" src= {{ event.image }} alt="event image" title="Image">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<h5 class="card-title"> {{ event.name }} <span class="badge bg-primary text-wrap"> {{ event.status }} </span></h5>
+										<p class="card-text"><small>Artist: {{ event.artist }}</small></p>
+										<p class="card-text"><small>Date: {{ event.date }} &nbsp Venue: {{ event.venue }}</small></p>
+										<p class="card-text">{{ event.description|truncate(75,true) }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<!-- Event Cards Container-->
+</main>
+{% endblock %}
